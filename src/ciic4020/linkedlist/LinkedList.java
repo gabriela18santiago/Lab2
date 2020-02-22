@@ -283,4 +283,32 @@ public class LinkedList<E> implements List<E> {
 		while (size() > 0)
 			remove(0);
 	}
+
+	//Exercise 2
+	@Override
+	public int replaceAll(E e, E f) {
+		int count = 0;
+		// Verifies if the list is empty or if it contains the element "e"
+		if(this.isEmpty() || !this.contains(e)) {return count;}
+		else {
+			for (int i = 0; i < this.size(); i++) {
+				if (this.get(i) == e) {
+					this.set(i, f);
+					count++;
+				}
+			}
+			return count;
+		}
+	}
+	//Exercise 3
+	@Override
+	public List<E> reverse() {
+		List<E> newList = new LinkedList<E>();
+		if(this.isEmpty()){return newList;}
+
+		for(int i = this.size()-1; i<0;i++){
+			newList.add(this.get(i));
+		}
+		return newList;
+	}
 }
