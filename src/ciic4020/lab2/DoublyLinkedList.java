@@ -104,6 +104,10 @@ public class DoublyLinkedList<E> implements List<E> {
     @Override
     public void add(E obj) {
         Node newNode = new Node(obj);
+        newNode.setPrev(trailer.prev);
+        newNode.setNext(trailer);
+        trailer.getPrev().setNext(newNode);
+        trailer.setPrev(newNode);
 
         /* TODO With a Doubly Linked List (with header AND trailer), this is easy.
          * The new node must be inserted before the trailer, and that's it.
@@ -154,7 +158,9 @@ public class DoublyLinkedList<E> implements List<E> {
         if (nextNode != trailer) { // Found it!
             // If we have A <-> B <-> C, need to get to A <-> C
             curNode.setNext(nextNode.getNext());
-            nextNode.getNext().setPrev(curNode); //verify
+            //Exercise 4
+            nextNode.getNext().setPrev(curNode); //verify added
+//            nextNode.setValue(null);
             // TODO For a DLL, what else needs to be done? See comment above for a hint.
 
             nextNode.clear(); // free up resources
@@ -167,7 +173,7 @@ public class DoublyLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(int index) {
-        Node rmNode;
+        Node rmNode = null;
         // TODO These variables could be helpful: Node prevNode, nextNode;
         // Feel free to declare and use them in any methods, but they're not required.
 
@@ -175,13 +181,21 @@ public class DoublyLinkedList<E> implements List<E> {
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         // If we have A <-> B <-> C, need to get to A <-> C
-        rmNode = get_node(index); // Get the node that is to be removed
+        if(index == 0){
+            this.remove(rmNode.getValue());
+//            header.setNext(trailer);
+//            trailer.setPrev(header);
 
-        // TODO For a DLL, what needs to be done?
+        }else {
+            rmNode = get_node(index); // Get the node that is to be removed
+            rmNode.getPrev().setNext(rmNode.getNext()); //added
+            rmNode.getNext().setPrev(rmNode.getNext()); //added
 
-        rmNode.clear();
-        currentSize--;
+            // TODO For a DLL, what needs to be done?
 
+            rmNode.clear();
+            currentSize--;
+        }
         return true;
     }
 
@@ -222,12 +236,11 @@ public class DoublyLinkedList<E> implements List<E> {
                 /* TODO For a DLL, what needs to be done?
                  * You can declare more Node variables if it helps make things clear.
                  */
-
-                nextNode.clear();
-                currentSize--;
+                Node next = nextNode.getNext();
+                curNode.setNext(next);
+                next.setPrev(curNode);
                 counter++;
-				/* Node that was pointed to by nextNode no longer
-				exists
+				/* Node that was pointed to by nextNode no longer exists
 				   so reset it such that it's still the node after curNode */
                 nextNode = curNode.getNext();
             }

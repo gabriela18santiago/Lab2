@@ -284,6 +284,21 @@ public class LinkedList<E> implements List<E> {
 			remove(0);
 	}
 
+	//Exercise 1
+	public static int totalCount(String s, Object[] lists) {
+		int count = 0;
+		for (int i = 0; i < lists.length; i++) {
+			List<String> temp = new LinkedList<>();
+			temp = ((List<String>) lists[i]);
+			for (int j = 0; j < temp.size(); j++) {
+				if (temp.get(j).equals(s)) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+
 	//Exercise 2
 	@Override
 	public int replaceAll(E e, E f) {
@@ -305,9 +320,10 @@ public class LinkedList<E> implements List<E> {
 	public List<E> reverse() {
 		List<E> newList = new LinkedList<E>();
 		if(this.isEmpty()){return newList;}
-
-		for(int i = this.size()-1; i<0;i++){
-			newList.add(this.get(i));
+		else {
+			for (int i = this.size() - 1; i >= 0; i--) {
+				newList.add(this.get(i));
+			}
 		}
 		return newList;
 	}

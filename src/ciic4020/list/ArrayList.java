@@ -9,8 +9,23 @@ public class ArrayList<E> implements List<E> {
 	private E elements[];
 	
 	private int currentSize;
-	
-	
+
+	//Exercise 1
+	public static int totalCount(String s, Object[] lists) {
+		int count = 0;
+		for (int i = 0; i < lists.length; i++) {
+			List<String> temp = new ArrayList<>(lists.length);
+			temp = ((List<String>) lists[i]);
+			for (int j = 0; j < temp.size(); j++) {
+				if (temp.get(j).equals(s)) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+
+
 	private class ListIterator implements Iterator<E> {
 		private int currentPosition;
 		
@@ -200,8 +215,8 @@ public class ArrayList<E> implements List<E> {
 	public int replaceAll(E e, E f) {
 		int count = 0;
 		//It verifies if the list is empty or if it contains the element "e"
-		if(this.isEmpty() || !this.contains(e)){return count;}
-		else {
+//		if(this.isEmpty() || !this.contains(e)){return count;}
+//		else {
 			for (int i = 0; i < this.size(); i++) {
 				if (this.get(i) == e) {
 					this.set(i, f);
@@ -209,7 +224,7 @@ public class ArrayList<E> implements List<E> {
 				}
 			}
 			return count;
-		}
+//		}
 	}
 
 	//Exercise 3
@@ -217,11 +232,12 @@ public class ArrayList<E> implements List<E> {
 	public List<E> reverse() {
 		List<E> newList = new ArrayList<E>(this.size());
 		if(this.isEmpty()) {return newList;}
-
-		for(int i = this.size()-1; i<0; i++){
-			newList.add(this.get(i));
+		else {
+			for (int i = this.size() - 1; i >= 0; i--) {
+				newList.add(this.get(i));
+			}
+			return newList;
 		}
-		return newList;
 	}
 
 	@Override
