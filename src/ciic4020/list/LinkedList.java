@@ -1,4 +1,6 @@
-package ciic4020.linkedlist;
+package ciic4020.list;
+
+//import ciic4020.linkedlist.List;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -284,21 +286,6 @@ public class LinkedList<E> implements List<E> {
 			remove(0);
 	}
 
-	//Exercise 1
-	public static int totalCount(String s, Object[] lists) {
-		int count = 0;
-
-		for (int i = 0; i < lists.length; i++) {
-			List<String> temp = new LinkedList<>();
-			temp = ((List<String>) lists[i]);
-			for (int j = 0; j < temp.size(); j++) {
-				if (temp.get(j).equals(s)) {
-					count++;
-				}
-			}
-		}
-		return count;
-	}
 
 	//Exercise 2
 	@Override
@@ -308,19 +295,20 @@ public class LinkedList<E> implements List<E> {
 		// Verifies if the list is empty or if it contains the element "e"
 		if(this.isEmpty() || !this.contains(e)) {return count;}
 		else {
-			while (curNode.value == e) {
-				curNode.setValue(f);
-				count++;
-				curNode = curNode.getNext();
-
+			for(int i = 0; i<this.size();i++){
+				if(this.get(i).equals(e)){
+					this.set(i,f);
+					count++;
 				}
 			}
+		}
 		return count;
 	}
 	//Exercise 3
+
 	@Override
 	public List<E> reverse() {
-		List<E> newList = new LinkedList<E>();
+		List<E> newList = new LinkedList();
 //		Node curNode = header.getNext();
 		if(this.isEmpty()){return newList;}
 		else {

@@ -1,6 +1,6 @@
 package ciic4020.linkedlist.test;
 
-import ciic4020.linkedlist.LinkedListFactory;
+import ciic4020.list.LinkedListFactory;
 import ciic4020.linkedlist.List;
 import ciic4020.linkedlist.ListFactory;
 

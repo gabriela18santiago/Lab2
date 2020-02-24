@@ -1,6 +1,4 @@
-package ciic4020.lab2;
-
-import ciic4020.linkedlist.List;
+package ciic4020.list;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -328,14 +326,32 @@ public class DoublyLinkedList<E> implements List<E> {
         while (size() > 0)
             remove(0);
     }
-
+    //Exercise 3
     @Override
     public int replaceAll(E e, E f) {
-        return 0;
-    }
+        int totalRep =0;
 
+        for(int i =0; i<this.size(); i ++) {
+            if(this.get_node(i).getValue().equals(e)) {
+                this.get_node(i).setValue(f);
+
+                totalRep++;
+            }
+        }
+        return totalRep;
+    }
+    //Exercise 3
     @Override
     public List<E> reverse() {
-        return null;
+        List<E> newList = new DoublyLinkedList<>();
+
+        if(this.isEmpty()) {
+            return newList;
+        }
+        for(int i = this.currentSize-1; i>=0; i--) {
+            newList.add(this.get(i));
+        }
+
+        return newList;
     }
 }

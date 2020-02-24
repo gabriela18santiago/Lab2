@@ -3,11 +3,13 @@ package ciic4020.done;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import ciic4020.list.DoublyLinkedList;
+import ciic4020.list.LinkedList;
+import ciic4020.list.List;
 import org.junit.Before;
 import org.junit.Test;
 
 import ciic4020.linkedlist.*;
-import ciic4020.lab2.*;
 
 public class Lab2TesterDoubly {
 
