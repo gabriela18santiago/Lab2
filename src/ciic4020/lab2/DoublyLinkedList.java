@@ -173,7 +173,7 @@ public class DoublyLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(int index) {
-        Node rmNode = null;
+        Node rmNode;
         // TODO These variables could be helpful: Node prevNode, nextNode;
         // Feel free to declare and use them in any methods, but they're not required.
 
@@ -181,10 +181,9 @@ public class DoublyLinkedList<E> implements List<E> {
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         // If we have A <-> B <-> C, need to get to A <-> C
+        rmNode = get_node(index);
         if(index == 0){
             this.remove(rmNode.getValue());
-//            header.setNext(trailer);
-//            trailer.setPrev(header);
 
         }else {
             rmNode = get_node(index); // Get the node that is to be removed

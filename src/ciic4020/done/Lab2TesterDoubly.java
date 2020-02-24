@@ -1,4 +1,4 @@
-package ciic4020;
+package ciic4020.done;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -97,6 +97,12 @@ public class Lab2TesterDoubly {
         assertTrue("Xi should be at index 2.", dl_3.firstIndex("Xi") == 2);
     }
 
+    @Test
+    public void isEmpty() {
+        dl_1.clear();
+        assertTrue("List is empty.", dl_1.isEmpty() == true);
+        assertTrue("List is not empty.", dl_2.isEmpty() == false);
+    }
 
     @Test
     public void remove() {
@@ -171,5 +177,10 @@ public class Lab2TesterDoubly {
 
     }
 
+    @Test
+    public void clear() {
+        dl_1.clear();
+        assertTrue("This list should be empty.", dl_1.size() == 0);
+    }
 
 }

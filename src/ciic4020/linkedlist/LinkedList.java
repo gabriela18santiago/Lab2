@@ -287,6 +287,7 @@ public class LinkedList<E> implements List<E> {
 	//Exercise 1
 	public static int totalCount(String s, Object[] lists) {
 		int count = 0;
+
 		for (int i = 0; i < lists.length; i++) {
 			List<String> temp = new LinkedList<>();
 			temp = ((List<String>) lists[i]);
@@ -302,23 +303,25 @@ public class LinkedList<E> implements List<E> {
 	//Exercise 2
 	@Override
 	public int replaceAll(E e, E f) {
+		Node curNode = header.getNext();
 		int count = 0;
 		// Verifies if the list is empty or if it contains the element "e"
 		if(this.isEmpty() || !this.contains(e)) {return count;}
 		else {
-			for (int i = 0; i < this.size(); i++) {
-				if (this.get(i) == e) {
-					this.set(i, f);
-					count++;
+			while (curNode.value == e) {
+				curNode.setValue(f);
+				count++;
+				curNode = curNode.getNext();
+
 				}
 			}
-			return count;
-		}
+		return count;
 	}
 	//Exercise 3
 	@Override
 	public List<E> reverse() {
 		List<E> newList = new LinkedList<E>();
+//		Node curNode = header.getNext();
 		if(this.isEmpty()){return newList;}
 		else {
 			for (int i = this.size() - 1; i >= 0; i--) {

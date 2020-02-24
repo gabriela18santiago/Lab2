@@ -10,20 +10,7 @@ public class ArrayList<E> implements List<E> {
 	
 	private int currentSize;
 
-	//Exercise 1
-	public static int totalCount(String s, Object[] lists) {
-		int count = 0;
-		for (int i = 0; i < lists.length; i++) {
-			List<String> temp = new ArrayList<>(lists.length);
-			temp = ((List<String>) lists[i]);
-			for (int j = 0; j < temp.size(); j++) {
-				if (temp.get(j).equals(s)) {
-					count++;
-				}
-			}
-		}
-		return count;
-	}
+
 
 
 	private class ListIterator implements Iterator<E> {
@@ -208,23 +195,37 @@ public class ArrayList<E> implements List<E> {
 			this.elements[i] = null;
 		this.currentSize = 0;
 	}
-	//totalCount()*********
+
+	//Exercise 1
+	public static int totalCount(String s, Object[] lists) {
+		int count = 0;
+		for (int i = 0; i < lists.length; i++) {
+			List<String> temp = new ArrayList<>(lists.length);
+			temp = ((List<String>) lists[i]);
+			for (int j = 0; j < temp.size(); j++) {
+				if (temp.get(j).equals(s)) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
 
 	//Exercise 2
 	@Override
 	public int replaceAll(E e, E f) {
 		int count = 0;
 		//It verifies if the list is empty or if it contains the element "e"
-//		if(this.isEmpty() || !this.contains(e)){return count;}
-//		else {
+		if(this.isEmpty() || !this.contains(e)){return count;}
+		else {
 			for (int i = 0; i < this.size(); i++) {
-				if (this.get(i) == e) {
+				if (this.get(i).equals(e)) {
 					this.set(i, f);
 					count++;
 				}
 			}
 			return count;
-//		}
+		}
 	}
 
 	//Exercise 3
